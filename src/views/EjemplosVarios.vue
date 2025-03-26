@@ -1,4 +1,7 @@
 <template>
+    <p>Selector de lances</p>
+    <EjemploSelector/>
+    <hr>
     <p>Repetidor de mensaje</p>
     <RepetidorMensaje :count="count" texto="Este es el texto"/>
     <hr>
@@ -14,8 +17,10 @@
 </template>
 
 <script setup lang="ts">
+
     import Contador1 from '@/components/pruebas/Contador1.vue';
     import EjemploBinding from '@/components/pruebas/EjemploBinding.vue';
+    import EjemploSelector from '@/components/pruebas/EjemploSelector.vue';
     import Hijo from '@/components/pruebas/Hijo.vue';
     import RepetidorMensaje from '@/components/pruebas/RepetidorMensaje.vue';
 
