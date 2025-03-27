@@ -2,14 +2,14 @@
     
     <p>Reloj</p>
     <div class="reloj">
-        <Reloj :alarm="69" :alarmON="true"/>
+        <Reloj :alarm="alarm" :alarmON="alarmON"/>
     </div>
     <div class="controlAlarma">
 
+        <button @click="alarmON = !alarmON">SET ALARM {{ alarmON ? 'OFF' : 'ON' }}</button>
+        <input v-model="alarm" type="number" value="alarm"/>
+
     </div>
-    
-
-
 
     <hr>
     <p>Selector de lances</p>
@@ -37,10 +37,13 @@
     import Hijo from '@/components/pruebas/Hijo.vue';
     import Reloj from '@/components/pruebas/Reloj.vue';
     import RepetidorMensaje from '@/components/pruebas/RepetidorMensaje.vue';
+import { ref } from 'vue';
     
     const refran = "Este es el consejo que llega de tu padre...";
-
     const count = 12;
+
+    const alarm = ref(2500);
+    const alarmON = ref(false);
 
 </script>
 
@@ -50,7 +53,7 @@
         background-color: orange;
         padding:4x;
         width: 400px;
-        height: 500px;;
+       
     }
 
     .controlAlarma{

@@ -15,7 +15,6 @@
       <h3>Alarm {{ alarmON ? 'ON' : 'OFF' }}</h3>
       <h3>Set Alarm {{ getDisplay(alarm) }}</h3>
     </div>
-    <hr>  
     <div>
       <div class="display">
         <h1 class="tituloGrande">{{ getDisplay(reloj.totalSeconds) }} </h1>
@@ -25,12 +24,12 @@
 </template>
 
 <script setup lang="ts">
-  import { reactive } from "vue";
+  import { reactive, ref } from "vue";
 
   const props = defineProps<{
-        alarm: number,
-        alarmON: boolean
-    }>();
+    alarm: number,
+    alarmON: boolean
+  }>();
 
   const reloj: Reloj = reactive({
     intervalId: null,
