@@ -5,10 +5,26 @@
         <Reloj :alarm="alarm" :alarmON="alarmON"/>
     </div>
     <div class="controlAlarma">
-
-        <button @click="alarmON = !alarmON">SET ALARM {{ alarmON ? 'OFF' : 'ON' }}</button>
-        <input v-model="alarm" type="number" value="alarm"/>
-
+        <div>
+            <button @click="alarmON = !alarmON">SET ALARM {{ alarmON ? 'OFF' : 'ON' }}</button>
+        </div>
+        <div>
+        <fieldset>   
+            <div>
+                    <label for="idHoras">Horas</label>
+                    <input id="idHoras" v-model="horas" type="number" value="horas"/>
+                </div>
+                <div>
+                    <label for="idMinutos">Minutos</label>
+                    <input id="idMinutos" v-model="minutos" type="number" value="minutos"/>
+                </div>
+                <div>
+                    <label for="idSegundos">Segundos</label>
+                    <input id="idSegundos" v-model="segundos" type="number" value="segundos"/>
+                </div>
+            </fieldset> 
+        </div>
+        
     </div>
 
     <hr>
@@ -37,13 +53,21 @@
     import Hijo from '@/components/pruebas/Hijo.vue';
     import Reloj from '@/components/pruebas/Reloj.vue';
     import RepetidorMensaje from '@/components/pruebas/RepetidorMensaje.vue';
-import { ref } from 'vue';
+    import { ref, watch } from 'vue';
     
     const refran = "Este es el consejo que llega de tu padre...";
     const count = 12;
 
-    const alarm = ref(2500);
+    const alarm = ref(0);
     const alarmON = ref(false);
+
+    const horas = ref(0);
+    const minutos = ref(0);
+    const segundos = ref(0);
+
+    watch([horas, minutos, segundos], () => {
+        alarm.value = horas.value * 3600 + minutos.value * 60 + segundos.value;
+    })
 
 </script>
 
@@ -52,14 +76,14 @@ import { ref } from 'vue';
     .reloj{
         background-color: orange;
         padding:4x;
-        width: 400px;
+        width: 600px;
        
     }
 
     .controlAlarma{
         background-color: blue;
         padding:4x;
-        width: 400px;
+        width: 600px;
         height: 180px;;
     }
 

@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-  import { reactive, ref } from "vue";
+  import { reactive, watch} from "vue";
 
   const props = defineProps<{
     alarm: number,
@@ -55,17 +55,10 @@
         reloj.totalSeconds += reloj.sentido;
       }
 
-    }, 100)
+    }, 1000)
 
     reloj.estado = "RUNNING";
    
-  }
-
-  const getDisplay = (time: number) => {
-    const horas = ("0" +  Math.floor(time / 3600)).slice(-2); 
-    const minutos = ("0" +  Math.floor(time / 60 % 60)).slice(-2);
-    const segundos = ("0" +  Math.floor(time % 60)).slice(-2);
-    return `${horas}:${minutos}:${segundos}`;
   }
 
   const start = () => {
@@ -78,7 +71,8 @@
     reloj.estado = "PAUSED";
   }
 
-  const invert = () => {
+  // Mejor definirla como el resto!
+  function invert() {
     reloj.sentido *= -1;
   }
 
@@ -96,9 +90,22 @@
     estado: string;
   }
 
+  const getDisplay = (time: number) => {
+    const horas = ("0" +  Math.floor(time / 3600)).slice(-2); 
+    const minutos = ("0" +  Math.floor(time / 60 % 60)).slice(-2);
+    const segundos = ("0" +  Math.floor(time % 60)).slice(-2);
+    return `${horas}:${minutos}:${segundos}`;
+  }
+
+  const audio = new Audio('/alarma1.mp3');
+  // Mejor definirla como el resto!
+  
   function playAlarm(){
-    const audio = new Audio('/alarma1.mp3');
+    
     audio.play();
+  }
+  function stopAudio(){
+    audio.pause();
   }
 
 </script>
@@ -107,8 +114,8 @@
   .display{
     margin:1px;
     padding:1px;
-    background-color: black;
-    color:red;
+  /*  background-color: black; */
+  /*  color:red; */
   }
 
   .tituloGrande{
