@@ -18,6 +18,7 @@
             </tr>
         </tbody>
     </table>
+    <pre>{{ JSON.stringify(equiposF,null, 2) }}</pre>
 </template>
 
 <script setup lang="ts">

@@ -1,4 +1,7 @@
 <template>
+    <p>Reloj</p>
+    <Reloj/>
+    <hr>
     <p>Selector de lances</p>
     <EjemploSelector/>
     <hr>
@@ -22,8 +25,9 @@
     import EjemploBinding from '@/components/pruebas/EjemploBinding.vue';
     import EjemploSelector from '@/components/pruebas/EjemploSelector.vue';
     import Hijo from '@/components/pruebas/Hijo.vue';
+    import Reloj from '@/components/pruebas/Reloj.vue';
     import RepetidorMensaje from '@/components/pruebas/RepetidorMensaje.vue';
-
+    
     const refran = "Este es el consejo que llega de tu padre...";
 
     const count = 12;
