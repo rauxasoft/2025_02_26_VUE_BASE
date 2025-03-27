@@ -1,6 +1,16 @@
 <template>
+    
     <p>Reloj</p>
-    <Reloj/>
+    <div class="reloj">
+        <Reloj :alarm="69" :alarmON="true"/>
+    </div>
+    <div class="controlAlarma">
+
+    </div>
+    
+
+
+
     <hr>
     <p>Selector de lances</p>
     <EjemploSelector/>
@@ -33,5 +43,23 @@
     const count = 12;
 
 </script>
+
+<style scoped>
+
+    .reloj{
+        background-color: orange;
+        padding:4x;
+        width: 400px;
+        height: 500px;;
+    }
+
+    .controlAlarma{
+        background-color: blue;
+        padding:4x;
+        width: 400px;
+        height: 180px;;
+    }
+
+</style>
 
 
